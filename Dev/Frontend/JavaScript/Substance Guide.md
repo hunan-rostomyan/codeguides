@@ -1,6 +1,7 @@
 ## Table of Contents
 
 - [General](#general)
+- [Commas](#commas)
 - [Comments](#comments)
 - [Configurability](#configurability)
 - [Consistency](#consistency)
@@ -28,6 +29,17 @@
 1. Understand your language. Good C advice isn't necessarily good JavaScript advice. Avoiding recursion, for example, is bad advice for JavaScript programmers.
 2. Understand your execution environment. If you're developing for the browser, explore the HTML5 APIs available to the runtime. Although not strictly part of the language itself (in the same way the UNIX system call interface isn't part of the C language), browser APIs are extremely useful if you want to do things like manipulating the history, storing lots of data on client side, making offline browsing of your app possible, and so on. If you're developing for the server, understand how processes and threads work, among other things. (See [Hilfingerisms](#hilfingerisms) for more on not being clueless.)
 3. Read other people's code. Github is full of open source projects. Some of those projects have many thounsands of eyes on them and can teach valuable lessons on style and substance.
+
+## Commas
+
+1. Add commas at the ends of object property declarations. Do so even for the last one to aid diffing.
+
+   ```js
+   var obj = {
+      a1: 1,
+      a2: 2,
+   };
+   ```
 
 ## Comments
 
