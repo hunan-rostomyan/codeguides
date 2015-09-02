@@ -51,6 +51,26 @@ If the logic is necessarily complicated, don't hesitate to add comments to clari
 4. Comments aren't a substitute for clear code.
 5. Make sure comments are not out of date.
 6. If you're familiar with Closure Compiler or JSDoc annotations, use them.
+7. If you have a long piece of code (300 lines is super long), add a comment at the end of the closing brace to help the reader understand where it ends. For example, if you have a function like this:
+
+   ```js
+   var GraphCreator = function(svg, nodes, edges) {
+       ...
+   };
+   ```
+You can do something like the following:
+
+   ```js
+   var GraphCreator = function(svg, nodes, edges) {
+       ...
+   };  // end of GraphCreator
+   ```
+
+   ```js
+   var GraphCreator = function(svg, nodes, edges) {
+       ...
+   };  // <-- GraphCreator
+   ```
 
 ## Configurability
 
@@ -156,25 +176,25 @@ Whenever you find yourself typing the same or very similar piece of code, you're
    ```js
    setInterval(sync, 1000);  // Syncs stuff every second.
    ```
-   
+
    abstract them out by naming them:
    ```js
    (1) var syncIntval = 1000;          // Name the literal
    (2) setInterval(sync, syncIntval);  // Use the name
    ```
-   
+
    This move has many benefits (other than keeping the code DRY):
-   
+
    1. The sync interval can be modified throughout the file by changing a single word.
    2. The assignment (2) can be placed in a *header* file and moved into *config/*.
-   
+
 2. Name recurring string literals
 
    Instead of embedding string literals in the logic:
    ```js
    $('#graph-select option:selected').val();
    ```
-   
+
    abstract them out by naming them:
    ```js
    var $graphSel = $('#graph-select');       // Name the literal
@@ -244,7 +264,7 @@ One advantage of the latter is that instead of nesting loops inside each other, 
    var i;
    var sum = 0;
    var arr = [1, 2, 3, 4, 5];
-   
+
    for (i = 0; i < arr.length; i++) {
        sum = add(sum, square(arr[i]));
    }
@@ -295,7 +315,7 @@ The `for .. in --]` loop is problematic because it iterates over the entire *pro
    var son = {
        firstName: 'John Jr.'
    };
-   
+
    father.toString();  // => "John Doe"
    son.toString();     // => "John Jr. Doe"
    ```
@@ -322,7 +342,7 @@ Not exactly what we wanted. To iterate over just the properties that are on the 
      }
    };
    ```
-   
+
    or in a more compact way:
    ```js
    Object.keys(son).forEach(function(key) {
