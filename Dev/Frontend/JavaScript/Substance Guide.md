@@ -158,7 +158,7 @@ Although `friends` points to an Array and is thus of a reference type, its defau
 
 ## Dependency injection
 
-1. If `obj1` depeneds on `obj2`, it's better to allow another object to create `obj2` and pass it (by value or by reference) to `obj1`. This may be automated (using, say, AngularJS).
+1. If `obj1` depends on `obj2`, it's better to allow another object to create `obj2` and pass it (by value or by reference) to `obj1`. This may be automated (using, say, AngularJS).
 2. Dependency injection allows dependencies to be swapped with minimal refactoring.
 3. Dependency injection allows us to test modules by giving objects simpler versions of their dependencies that nevertheless expose the same interface as their full versions.
 
