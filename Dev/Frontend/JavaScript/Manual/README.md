@@ -1,0 +1,1 @@
+Here you will find notes on various JavaScript concepts and techniques.
