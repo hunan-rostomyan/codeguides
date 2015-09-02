@@ -1,3 +1,34 @@
+## Table of Contents
+
+- [General](#general)
+- [Comments](#comments)
+- [Configurability](#configurability)
+- [Consistency](#consistency)
+- [`Context`](#context)
+- [Conventions](#conventions)
+- [Defaults](#defaults)
+- [Dependency injection](#dependency-injection)
+- [Documentation](#documentation)
+- [DRY](#dry)
+- [Equality](#equality)
+- [Hilfingerisms](#hilfingerisms)
+- [Hoisting](#hoisting)
+- [Iteration](#iteration)
+- [Line breaks](#line-breaks)
+- [Loop invariants](#loop-invariants)
+- [`for..in`](#forin)
+- [Naming](#naming)
+- [Optimizations](#optimizations)
+- [Semicolons](#semicolons)
+- [References](#references)
+- [Changelog](#changelog)
+
+## General
+
+1. Understand your language. Good C advice isn't necessarily good JavaScript advice. Avoiding recursion, for example, is bad advice for JavaScript programmers.
+2. Understand your execution environment. If you're developing for the browser, explore the HTML5 APIs available to the runtime. Although not strictly part of the language itself (in the same way the UNIX system call interface isn't part of the C language), browser APIs are extremely useful if you want to do things like manipulating the history, storing lots of data on client side, making offline browsing of your app possible, and so on. If you're developing for the server, understand how processes and threads work, among other things. (See [Hilfingerisms](#hilfingerisms) for more on not being clueless.)
+3. Read other people's code. Github is full of open source projects. Some of those projects have many thounsands of eyes on them and can teach valuable lessons on style and substance.
+
 ## Comments
 
 If the logic is necessarily complicated, don't hesitate to add comments to clarify the intent. Do not describe the implementation, for the code is the best documentation of that.
@@ -141,12 +172,6 @@ Whenever you find yourself typing the same or very similar piece of code, you're
 ## Equality
 
 1. Always use *strict equality* (`===` and `!==`) for comparing value types. Even if you know the types of the relata.
-
-## General
-
-1. Understand your language. Good C advice isn't necessarily good JavaScript advice. Avoiding recursion, for example, is bad advice for JavaScript programmers.
-2. Understand your execution environment. If you're developing for the browser, explore the HTML5 APIs available to the runtime. Although not strictly part of the language itself (in the same way the UNIX system call interface isn't part of the C language), browser APIs are extremely useful if you want to do things like manipulating the history, storing lots of data on client side, making offline browsing of your app possible, and so on. If you're developing for the server, understand how processes and threads work, among other things. (See Hilfingerisms for more on not being clueless.)
-3. Read other people's code. Github is full of open source projects. Some of those projects have many thounsands of eyes on them and can teach valuable lessons in style and substance.
 
 ## Hilfingerisms
 
@@ -293,7 +318,7 @@ Not exactly what we wanted. To iterate over just the properties that are on the 
    });
    ```
 
-## Naming conventions
+## Naming
 
 1. Names of jQuery nodes should start with a '$'.
    ```js
@@ -321,8 +346,6 @@ Not exactly what we wanted. To iterate over just the properties that are on the 
 
 Certain statements (e.g. `let`, `import`/`export`, `break`) in JS [must](http://www.ecma-international.org/ecma-262/6.0/#sec-automatic-semicolon-insertion) be terminated with semicolons. That burden, however, is not entirely on the programmer. The engine follows an algorithm (called [Automatic Semicolon Insertion](http://www.ecma-international.org/ecma-262/6.0/#sec-rules-of-automatic-semicolon-insertion)) for inserting the missing semicolons. But the algorithm is [greedy](https://en.wikipedia.org/wiki/Greedy_algorithm), so it will insert a semicolon at the end of the line only if it cannot consume any more meaningful tokens. This may result in surprising behavior. To avoid being surprised, if you're not sure whether a semicolon will be inserted by ASI, don't skip them.
 
-### Tips
-
 1. Don't add semicolons after *function declarations*.
 
     ```js
@@ -339,9 +362,6 @@ Certain statements (e.g. `let`, `import`/`export`, `break`) in JS [must](http://
 
 ## References
 
-- The ECMAScript 2015 (ES6) Specification
+- The [ECMAScript 2015 Specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 - Analytics Table for Courses (Pull Request #138)
 
-## Changelog
-
-- [Sept 1, 2015] Added notes inspired by the analytics-table review (Pull Request 138)
