@@ -20,6 +20,7 @@
 - [`for..in`](#forin)
 - [Naming](#naming)
 - [Optimizations](#optimizations)
+- [Order](#order)
 - [Semicolons](#semicolons)
 - [References](#references)
 - [Changelog](#changelog)
@@ -373,6 +374,35 @@ Not exactly what we wanted. To iterate over just the properties that are on the 
 1. "Premature optimization is the root of all evil" (Knuth)
 2. Unless proven otherwise, assume that the compiler is more clever than you and don't do *microptimizations*. This means, don't do things like `++i` instead of `i++` because some people on StackOverflow think it performs better. Compilers have elaborate algorithms for optimizing such things, so don't get in the way (you might actually slow things down).
 3. For accurate benchmarking use [benchmark.js](http://benchmarkjs.com) or some such statistical analysis tool.
+
+## Order
+
+1. If variable declarations have no natural order to them (e.g. variable `id` being dependent on variable `node` is an example of a natural order), order them alphanumerically.
+
+   ```js
+   // Bad
+   var nodes = graph.getNodes();
+   var edges = graph.getEdges();
+   ```
+
+   ```js
+   // Good
+   var edges = graph.getEdges();
+   var nodes = graph.getNodes();
+   ```
+
+   The same convention holds for declarations of dependences in AMD modules. Here is an example.
+
+   ```js
+   // Bad
+   define(['underscore', 'Backbone'], (_, Backbone) => ...);
+   ```
+
+   ```js
+   define(['Backbone', 'underscore'], (Backbone, _) => ...);
+   ```
+
+   Although Backbone depends on underscore, all those dependencies are declared in the build file. Here their natural order doesn't need not be maintained.
 
 ## Semicolons
 
