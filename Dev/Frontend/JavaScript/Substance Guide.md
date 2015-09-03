@@ -215,7 +215,7 @@ Whenever you find yourself typing the same or very similar piece of code, you're
 
 ## Git
 
-1. When *naming your branches*, choose an appropriate name and try to namespace it so that it's easier to find. Here are two common ways of namespacing branches:
+1. When *naming your branches*, choose an appropriate name and try to namespace it so that it's easier to find. E.g.:
 
    ```bash
    $ git branch
@@ -226,18 +226,7 @@ Whenever you find yourself typing the same or very similar piece of code, you're
      transition-es6
      transition-py3
    ```
-
-   ```bash
-   $ git branch
-     fix/dev-849
-     fix/navbar
-     analytics/courses
-     analytics/wcenters
-     transition/es6
-     transition/py3
-   ```
-
-   I personally prefer the second approach, so my most recent branches will have "/"s in them as opposed to "-"s. If you find slashes confusing, feel free to use the first naming schema. But be consistent. If we know that you're always using one, it will be easier to find your feature branch.
+   Whatever you end up naming your branches, be consistent. If we know that you're always using one, it will be easier to find your feature branch.
 
 ## Hoisting
 
