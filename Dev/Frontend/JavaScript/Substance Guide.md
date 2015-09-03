@@ -12,6 +12,7 @@
 - [Documentation](#documentation)
 - [DRY](#dry)
 - [Equality](#equality)
+- [Git](#git)
 - [Hilfingerisms](#hilfingerisms)
 - [Hoisting](#hoisting)
 - [Iteration](#iteration)
@@ -211,6 +212,32 @@ Whenever you find yourself typing the same or very similar piece of code, you're
 1. **"Read the fucking manual"**. The advice is very general. If you're using a real operating system, try `man` or `info` and understand the commands at your disposal. If you're using a good library or framework, it's likely to have great documentation online. Try Underscore's, Backbone's, and Django's documentations for examples of great-looking and useful docs.
 2. **"Don't be clueless"**. Don't just copy and paste stuff without understanding from the internet (e.g. `rm -rf /`). Don't `curl` and shell out to scripts you didn't `cat`. Don't use IDEs that do things that you couldn't do without them. Understand your tools.
 3. **"Be lazy"**. Whenever you find yourself repeating the same task, you might want to consider investing in some time to automate whatever it is that you're doing. Say you have to count the sum of the byes of all the files in your working directory. If you have only 10 files, you might be tempted to simply list the number of bytes for each file and add them in your head in under a minute. The correct, lazy thing, however, would be to spend several times that amount of time writing something more reusable using `stat`, `awk`, `sed`, or other tools.
+
+## Git
+
+1. When *naming your branches*, choose an appropriate name and try to namespace it so that it's easier to find. Here are two common ways of namespacing branches:
+
+   ```bash
+   $ git branch
+     fix-dev-849
+     fix-navbar
+     analytics-courses
+     analytics-wcenters
+     transition-es6
+     transition-py3
+   ```
+
+   ```bash
+   $ git branch
+     fix/dev-849
+     fix/navbar
+     analytics/courses
+     analytics/wcenters
+     transition/es6
+     transition/py3
+   ```
+
+   I personally prefer the second approach, so my most recent branches will have "/"s in them as opposed to "-"s. If you find slashes confusing, feel free to use the first naming schema. But be consistent. If we know that you're always using one, it will be easier to find your feature branch.
 
 ## Hoisting
 
