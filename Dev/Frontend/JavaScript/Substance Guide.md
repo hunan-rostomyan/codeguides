@@ -8,6 +8,7 @@
 - [`Context`](#context)
 - [Conventions](#conventions)
 - [Defaults](#defaults)
+- [Defensive programming](#defensive-programming)
 - [Dependency injection](#dependency-injection)
 - [Documentation](#documentation)
 - [DRY](#dry)
@@ -157,6 +158,10 @@ Defaults for variables of value type (e.g. numbers, strings, booleans) should us
    ```
 
 Although `friends` points to an Array and is thus of a reference type, its default value should be the empty array so that we can simply test for `friends.length` to check emptiness. `cv` however, is better off being assigned `null` (this is a convention according to which `null` is assigned to all variables that expect an `Object` but somehow don't or can't have it).
+
+## Defensive programming
+
+Read [Learn C the Hard Way, Ex. 27](http://c.learncodethehardway.org/book/ex27.html).
 
 ## Dependency injection
 

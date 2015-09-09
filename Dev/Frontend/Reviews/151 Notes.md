@@ -1,6 +1,6 @@
 ## Review of [PR 151] ("topic modeler")
 
-In the [Stylistic issues](#stylistic-issues) section I talk about linting, in [Substantial issues](#substantial-issues) you'll find a categorized list of concerns/suggestions (often general, big picture observations). In [Suggestions](#suggestions) you'll find concrete suggestions for improving the code. Admittedly, some of the suggestions are non-normative (using `forEach` instead of C-style `for` loops), but I strongly believe that functional idioms are more readabl, less error prone, and no less efficient than their imperative equivalents.
+In the [Stylistic issues](#stylistic-issues) section I talk about linting, in [Substantial issues](#substantial-issues) you'll find a categorized list of concerns/suggestions (often general, big picture observations). In [Suggestions](#suggestions) you'll find concrete suggestions for improving the code. Admittedly, some of the suggestions are non-normative (using `forEach` instead of C-style `for` loops), but I strongly believe that functional idioms are more readable, less error prone, and no less efficient than their imperative equivalents.
 
 In [Questions](#questions) I've listed some questions (I think currently it's a single item list), in [Todo](#todo) I've listed some more things to do (it's kinda meta, unlike [Suggestions](#suggestions)). In [Next steps](#next-steps), I mention some things to be done in the near future. And [References](#references) contains links to resources used to prepare this document (currently just the JS Substance Guide).
 
@@ -113,9 +113,9 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
 
 - Function names are sometimes misleading. For example, `changeTextOfNode` sounds like a function that mutates something, but it turns out that it also returns a value. It's of course possible to have a mutator that also returns a meaningful value, but such functions are not easy to understand or test.
 
-- High *cyclomatic complexity* makes functions hard to understand, hard to test. Try to keep branching to the minimum.
+- High [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity#Definition) makes functions hard to understand, hard to test. Try to keep branching to the minimum.
 
-- I noticed a strange use of `filter`, where besides returning from the callback, you were also mutating state. I don't think in this particular case there is anything buggy going on, but doing so is a very dangerous thing. It can lead to a problem known as *"iterator invalidation"*, which usually happens when one mutates the collection one is iterating over.
+- I noticed a strange use of `filter`, where besides returning from the callback, you were also mutating state. I don't think in this particular case there is anything buggy going on, but doing so is a very dangerous thing. It can lead to a problem known as [iterator invalidation](http://stackoverflow.com/q/16904454/2672370), which usually happens when one mutates the collection one is iterating over.
 
 - Instead of `filter`, it's often more readable to use Underscore's `_.where` and `_.findWhere` utilities.
 
@@ -175,11 +175,11 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
    }
    return 'conceptg';
    ```
-   with:
+   with (notice the strict equality change):
    ```js
    return 'conceptg' +
-       (d.id == parseInt(getSourceNodeId()) ? ' selected' : '') +
-       (d.id == parseInt(getTargetNodeId()) ? ' target': '');
+       (d.id === parseInt(getSourceNodeId()) ? ' selected' : '') +
+       (d.id === parseInt(getTargetNodeId()) ? ' target': '');
    ```
 
 - Replace:
@@ -215,9 +215,9 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
        word1: ['word4', 'word5', ...],
        word2: ['word10', 'word11', ...],
        word3: ['word10', 'word11', ...],
-       _defaults: ['word1', 'word2', ...],
+       _: ['word1', 'word2', ...],
     };
-    return assoc[topic] || assoc['_defaults'];
+    return assoc[topic] || assoc['_'];
    ```
 
 - Replace:
@@ -227,7 +227,7 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
    ```
    with:
    ```js
-   _.where(thisGraph.circles, {id: id})
+   _.where(thisGraph.circles, {id: d.id})
    ```
 
 ## Questions
