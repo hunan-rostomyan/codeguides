@@ -125,6 +125,111 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
 
 - Instead of `obj.key = null` do `delete obj.key`.
 
+- Replace:
+
+   ```js
+   if (Math.sqrt(x * x + y * y) <= r2) {
+       return true;
+   }
+   return false;
+   ```
+   with:
+   ```js
+   return Math.sqrt(x * x + y * y) <= r2
+   ```
+
+- Replace:
+
+   ```js
+   var result = true;
+   if (y_length < position) {
+       return false;
+   }
+   return result;
+   ```
+   with:
+   ```js
+   return (y_length >= position)
+   ```
+
+- Replace:
+
+   ```js
+   var source = thisGraph.nodes.filter(function(n) {
+       return n.title == sentence[0];
+   })[0];
+   ```
+   with:
+   ```js
+   var source = _.findWhere(thisGraph.nodes, {title: sentence[0]});
+   ```
+
+- Replace:
+
+   ```js
+   if (d.id == parseInt(getSourceNodeId())) {
+       return 'conceptg selected';
+   }
+   if (d.id == parseInt(getTargetNodeId())) {
+       return 'conceptg target';
+   }
+   return 'conceptg';
+   ```
+   with:
+   ```js
+   return 'conceptg' +
+       (d.id == parseInt(getSourceNodeId()) ? ' selected' : '') +
+       (d.id == parseInt(getTargetNodeId()) ? ' target': '');
+   ```
+
+- Replace:
+
+   ```js
+   var result;
+   switch (topic) {
+       case 'music':
+           result = ['Adagio', 'Band', ...];
+           break;
+       case 'Adagio':
+           result = ['word1', 'word2', ...];
+           break;
+       case 'word1':
+           result = ['word4', 'word5', ...];
+           break;
+       case 'word2':
+           result = ['word10', 'word11', ...];
+           break;
+       case 'word3':
+           result = ['word10', 'word11', ...];
+           break;
+       default:
+           result = ['word1', 'word2', ...];
+   }
+   return result;
+   ```
+   with:
+   ```js
+   var assoc = {
+       music: ['Adagio', 'Band', ...],
+       Adagio: ['word1', 'word2', ...],
+       word1: ['word4', 'word5', ...],
+       word2: ['word10', 'word11', ...],
+       word3: ['word10', 'word11', ...],
+       _defaults: ['word1', 'word2', ...],
+    };
+    return assoc[topic] || assoc['_defaults'];
+   ```
+
+- Replace:
+
+   ```js
+   thisGraph.circles.filter(function(dval) {return dval.id === d.id;})
+   ```
+   with:
+   ```js
+   _.where(thisGraph.circles, {id: id})
+   ```
+
 ## Questions
 
 1. Could those 'transform', 'scale', etc. (from, say `zoomWithSliderLibrary`) be extracted out into functions for interpolating? They look a bit messy and tightly-coupled.
