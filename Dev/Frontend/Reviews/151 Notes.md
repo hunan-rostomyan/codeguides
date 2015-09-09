@@ -240,13 +240,13 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
 
    1. Please answer the [Questions](#questions) above. Email answers to my WriteLab email.
 
-   2. Follow the directions for liting your files under [General](#general). After Hunan completes (1), get the latest *.jscsrc* file and run the linter again. As I mentioned, once the Essay Builder is integrated into the rest of the system, you'll simply run `grunt jscss` to do the linting.
+   2. Follow the directions for liting your files under [General](#general). Once [PR 167] is merged into develop, get the latest *.jscsrc* file and run the linter again (may need to run `npm update` to make sure you have the right dependencies). As I mentioned, once the Essay Builder is integrated into the rest of the system, you'll simply run `grunt jscss` to do the linting.
 
    3. Incorporate Hunan's suggestions listed in this document.
 
 - Hunan:
 
-   1. Add "requireTrailingComma" and "disallowMultipleVarDecl" (strict) to *.jscsrc*.
+   1. ~~Add "requireTrailingComma" and "disallowMultipleVarDecl" (strict) to *.jscsrc*.~~
 
    2. Add a note about *pure vs impure* as they relate to testability.
 
@@ -261,6 +261,7 @@ In [Questions](#questions) I've listed some questions (I think currently it's a 
 [JS Guide] [JavaScript Substance Guide](https://github.com/hunan-rostomyan/codeguides/blob/93a061220e4413450001f60c1cfa7e36b6caa10c/Dev/Frontend/JavaScript/Substance%20Guide.md)
 
 [PR 151]: https://bitbucket.org/writetrack/writetrack/pull-requests/151/topic-modeler/diff
+[PR 167]: https://bitbucket.org/writetrack/writetrack/pull-requests/167/1-disallow-all-multiple-var-declarations-2/diff
 [JS Guide]: https://github.com/hunan-rostomyan/codeguides/blob/93a061220e4413450001f60c1cfa7e36b6caa10c/Dev/Frontend/JavaScript/Substance%20Guide.md
 [Comments]: https://github.com/hunan-rostomyan/codeguides/blob/master/Dev/Frontend/JavaScript/Substance%20Guide.md#comments
 [DRY]: https://github.com/hunan-rostomyan/codeguides/blob/master/Dev/Frontend/JavaScript/Substance%20Guide.md#dry
